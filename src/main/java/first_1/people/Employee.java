@@ -12,29 +12,29 @@ import java.util.Map;
 public abstract class Employee {
 
     @NonNull
-    private Integer salary;
+    protected Integer salary;
 
     @NonNull
-    private String firstName;
+    protected String firstName;
 
     @NonNull
-    private String lastName;
+    protected String lastName;
 
-    private String middleName;
-
-    @NonNull
-    private Integer workExperience;
+    protected String middleName;
 
     @NonNull
-    private Integer dailyWorkHours;
+    protected Integer workExperience;
 
     @NonNull
-    private Position position;
+    protected Integer dailyWorkHours;
 
     @NonNull
-    private Map<Position, Integer> salaryExpectations;
+    protected Position position;
+
     @NonNull
-    private String companyName;
+    protected Map<Position, Integer> salaryExpectations;
+    @NonNull
+    protected String companyName;
 
     public String getFullName() {
         return lastName + " " + firstName + (middleName != null ? middleName : "");

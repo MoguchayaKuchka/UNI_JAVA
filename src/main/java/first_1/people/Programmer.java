@@ -12,36 +12,36 @@ import java.util.Map;
 public class Programmer extends Employee implements Liveable {
     private String programmingLanguage;
 
-    public Programmer(@NonNull Integer salary, @NonNull String firstName,
-                      @NonNull String lastName, @NonNull Integer workExperience,
-                      @NonNull Integer dailyWorkHours, @NonNull Position position,
-                      @NonNull Map<Position, Integer> salaryExpectations,
-                      @NonNull String companyName,
-                      @NonNull String programmingLanguage) {
+    public Programmer(Integer salary, String firstName,
+                      String lastName, Integer workExperience,
+                      Integer dailyWorkHours, Position position,
+                      Map<Position, Integer> salaryExpectations,
+                      String companyName,
+                      String programmingLanguage) {
         super(salary, firstName, lastName, workExperience, dailyWorkHours,
                 position, salaryExpectations, companyName);
         this.programmingLanguage = programmingLanguage;
     }
 
     public void introduceOnInterview() {
-        System.out.println("Hi, My name is " + getFullName() + ". I'm a " + getPosition().name() +
-                " " + programmingLanguage +" developer with " + getWorkExperience() + " years of" +
+        System.out.println("Hi, My name is " + getFullName() + ". I'm a " + position.name() +
+                " " + programmingLanguage +" developer with " + workExperience + " years of" +
                 "experience.");
     }
     @Override
     public boolean isSalaryRaiseRequired() {
         return !programmingLanguage.equals("PHP") &&
-                getSalaryExpectations().getOrDefault(getPosition(), 1000) > getSalary();
+                salaryExpectations.getOrDefault(position, 1000) > salary;
     }
 
     @Override
     public int getAssumedHoursOfSleep() {
-        return 8 - getWorkExperience();
+        return 8 - workExperience;
     }
 
     @Override
     public void hire(String companyName, Position position, Integer salary) {
-        if (salary < getSalaryExpectations().getOrDefault(position, 1000)) {
+        if (salary < salaryExpectations.getOrDefault(position, 1000)) {
             throw new SalaryException("I'll call u");
         }
         setCompanyName(companyName);
@@ -70,7 +70,7 @@ public class Programmer extends Employee implements Liveable {
 
     @Override
     public void hobby() throws WorkLifeBalanceException{
-        if (24 - getAssumedHoursOfSleep() - getDailyWorkHours() < 5) {
+        if (24 - getAssumedHoursOfSleep() - dailyWorkHours < 5) {
             throw new WorkLifeBalanceException("I wanna ask for a promotion");
         }
         System.out.println("Let's go to MTG tournament.");

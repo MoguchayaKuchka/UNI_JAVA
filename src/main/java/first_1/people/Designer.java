@@ -15,12 +15,12 @@ public class Designer extends Employee implements Liveable {
     private String courseLink;
 
     private int subsCount;
-    public Designer(@NonNull Integer salary, @NonNull String firstName,
-                    @NonNull String lastName, @NonNull Integer workExperience,
-                    @NonNull Integer dailyWorkHours, @NonNull Position position,
-                    @NonNull Map<Position, Integer> salaryExpectations,
-                    @NonNull String companyName,
-                    @NonNull Integer coursePrice, @NonNull String courseLink,
+    public Designer(Integer salary, String firstName,
+                    String lastName, Integer workExperience,
+                    Integer dailyWorkHours, Position position,
+                    Map<Position, Integer> salaryExpectations,
+                    String companyName,
+                    Integer coursePrice, String courseLink,
                     int subsCount) {
         super(salary, firstName, lastName, workExperience,
                 dailyWorkHours, position, salaryExpectations, companyName);
@@ -38,17 +38,17 @@ public class Designer extends Employee implements Liveable {
     @Override
     public boolean isSalaryRaiseRequired() {
         return subsCount < 100_000
-                && getSalaryExpectations().getOrDefault(getPosition(), 700) > getSalary();
+                && salaryExpectations.getOrDefault(position, 700) > salary;
     }
 
     @Override
     public int getAssumedHoursOfSleep() {
-        return 12 - getWorkExperience();
+        return 12 - workExperience;
     }
 
     @Override
     public void hire(String companyName, Position position, Integer salary) {
-        if (salary < getSalaryExpectations().getOrDefault(position, 700)
+        if (salary < salaryExpectations.getOrDefault(position, 700)
             && subsCount < 100_000) {
             throw new SalaryException("I'll think about it");
         }
@@ -79,7 +79,7 @@ public class Designer extends Employee implements Liveable {
 
     @Override
     public void hobby() throws WorkLifeBalanceException{
-        if (24 - getAssumedHoursOfSleep() - getDailyWorkHours() < 8) {
+        if (24 - getAssumedHoursOfSleep() - dailyWorkHours < 8) {
             throw new WorkLifeBalanceException("I won't survive without anime");
         }
         System.out.println("Let's go to anime fest.");

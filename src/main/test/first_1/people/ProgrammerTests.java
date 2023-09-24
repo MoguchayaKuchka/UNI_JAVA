@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProgrammerTests {
 
-    static Programmer programmer;
+    Programmer programmer;
     @BeforeEach
     public void init(){
         programmer = new Programmer(
@@ -28,9 +28,8 @@ public class ProgrammerTests {
                 Position.MIDDLE, 2500,
                 Position.SENIOR, 4000,
                 Position.TEAMLEAD, 6000
-
             ),
-                "JAVA", "CloudCom"
+                "CloudCom", "JAVA"
         );
     }
     @Test

@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DesignerTests {
 
-    static Designer designer;
+    Designer designer;
     @BeforeEach
     public void init(){
         designer = new Designer(
