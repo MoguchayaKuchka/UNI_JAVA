@@ -15,7 +15,6 @@ public class Util {
             } else {
                 System.out.println(entry.getKey() + " переведён на следующий курс (куда уж дальше) ");
             }
-
         }
 
         //Или
@@ -64,7 +63,7 @@ public class Util {
     }
 
     public static <T,V> void printEntrySet(Map<T, V> map) {
-        for (Map.Entry entry: map.entrySet()) {
+        for (Map.Entry<T, V> entry: map.entrySet()) {
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
         System.out.println("=======================");
